@@ -1,0 +1,99 @@
+Ejercicio1:
+a) Pivote central
+Selección del pivote: toma el elemento en la posición media: (izq + der)/2
+
+Orden del tiempo de ejecución:
+Selección del pivote: O(1)
+Partición: O(n), donde n es el número de elementos entre izq y der
+Orden del tiempo de ejecución final: O(n)
+
+b) Pivote aleatorio
+Selección del pivote: elemento aleatorio entre izq y der
+
+Orden del tiempo de ejecución:
+Selección del pivote: O(1)
+Partición: O(n)
+Orden del tiempo de ejecución final: O(n)
+
+c) Máximo
+Selección del pivote: recorre el arreglo y recibe el índice del numero más grande de este
+
+Orden del tiempo de ejecución:
+Selección del pivote: O(1)
+Partición: O(n)
+Orden del tiempo de ejecución final: O(n)
+
+Aunque todas las versiones tienen un tiempo de ejecución por partición de O(n), la forma en que se elige el pivote influye directamente en la calidad de las particiones y, por ende, en el orden global de ejecución de Quicksort (mejor caso, peor caso, promedio).
+
+Ejercicio2:
+Método de selección de pivote:
+Central (índice medio)
+- Ventajas:
+Fácil de implementar, rápida elección
+- Desventajas:
+Mala elección si los datos están ordenados o inversamente ordenados
+- Orden global de Quicksort
+Peor caso: O(n²), Promedio: O(n log n)
+
+Método de selección de pivote:
+Aleatorio
+- Ventajas:
+Reduce probabilidad de peores particiones, muy útil en datos con patrones
+- Desventajas:
+No garantiza balance perfecto, requiere generador de aleatorios
+- Orden global de Quicksort:
+Peor caso: O(n²), pero muy raro. 
+Promedio: O(n log n)
+
+Método de selección de pivote:
+Máximo
+- Ventajas:
+Útil solo si se busca ordenamiento parcial hacia el final
+- Desventajas:
+Genera particiones desbalanceadas (todo queda a la izquierda)
+- Orden global de Quicksort:
+Siempre Peor caso: O(n²)
+
+Ejercicio3:
+
+encuentraPivote - Pivote en el medio
+function encuentraPivote(izq, der, arreglo):
+    posPivote ← (izq + der) / 2
+    pivote ← arreglo[posPivote]
+    intercambiar(arreglo, posPivote, der)
+    i ← izq
+    for j ← izq to der - 1:
+        if arreglo[j] <= pivote:
+            intercambiar(arreglo, i, j)
+            i ← i + 1
+    intercambiar(arreglo, i, der)
+    return i
+
+encuentraPivoteRandom - Pivote aleatorio
+function encuentraPivoteRandom(izq, der, arreglo):
+    posPivote ← valor aleatorio entre izq y der
+    pivote ← arreglo[posPivote]
+    intercambiar(arreglo, posPivote, der)
+    i ← izq
+    for j ← izq to der - 1:
+        if arreglo[j] <= pivote:
+            intercambiar(arreglo, i, j)
+            i ← i + 1
+    intercambiar(arreglo, i, der)
+    return i
+
+encuentraPivoteMaximo - Pivote es el mayor valor
+function encuentraPivoteMaximo(izq, der, arreglo):
+    max ← izq
+    for i ← izq + 1 to der:
+        if arreglo[i] > arreglo[max]:
+            max ← i
+    pivote ← arreglo[max]
+    intercambiar(arreglo, max, der)
+    i ← izq
+    for j ← izq to der - 1:
+        if arreglo[j] <= pivote:
+            intercambiar(arreglo, i, j)
+            i ← i + 1
+    intercambiar(arreglo, i, der)
+    return i
