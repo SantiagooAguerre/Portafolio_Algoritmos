@@ -57,43 +57,57 @@ Siempre Peor caso: O(n²)
 Ejercicio3:
 
 encuentraPivote - Pivote en el medio
-function encuentraPivote(izq, der, arreglo):
-    posPivote ← (izq + der) / 2
-    pivote ← arreglo[posPivote]
-    intercambiar(arreglo, posPivote, der)
-    i ← izq
-    for j ← izq to der - 1:
-        if arreglo[j] <= pivote:
-            intercambiar(arreglo, i, j)
-            i ← i + 1
-    intercambiar(arreglo, i, der)
-    return i
+función encuentraPivote(izq, der, arreglo)
+COMIENZO
+    posPivote <- (izq + der) / 2
+    pivote <- arreglo[posPivote]
+    intercambiar(arreglo[posPivote], arreglo[der])
+    i <- izq
+    Para cada j <- izq hasta der - 1 hacer
+        Si arreglo[j] ≤ pivote entonces
+            intercambiar(arreglo[i], arreglo[j])
+            i <- i + 1
+	FinSi
+    FinPara
+    intercambiar(arreglo[i], arreglo[der])
+    devolver i
+FIN
 
 encuentraPivoteRandom - Pivote aleatorio
-function encuentraPivoteRandom(izq, der, arreglo):
-    posPivote ← valor aleatorio entre izq y der
-    pivote ← arreglo[posPivote]
-    intercambiar(arreglo, posPivote, der)
-    i ← izq
-    for j ← izq to der - 1:
-        if arreglo[j] <= pivote:
-            intercambiar(arreglo, i, j)
-            i ← i + 1
-    intercambiar(arreglo, i, der)
-    return i
+función encuentraPivoteRandom(izq, der, arreglo)
+COMIENZO
+    posPivote <- valor aleatorio entre izq y der
+    pivote <- arreglo[posPivote]
+    intercambiar(arreglo[posPivote], arreglo[der])
+    i <- izq
+    Para cada j <- izq hasta der - 1 hacer
+        Si arreglo[j] <= pivote entonces
+            intercambiar(arreglo[i], arreglo[j])
+            i <- i + 1
+	FinSi
+    FinPara
+    intercambiar(arreglo[i], arreglo[der])
+    devolver i
+FIN
 
 encuentraPivoteMaximo - Pivote es el mayor valor
-function encuentraPivoteMaximo(izq, der, arreglo):
-    max ← izq
-    for i ← izq + 1 to der:
-        if arreglo[i] > arreglo[max]:
-            max ← i
-    pivote ← arreglo[max]
-    intercambiar(arreglo, max, der)
-    i ← izq
-    for j ← izq to der - 1:
-        if arreglo[j] <= pivote:
-            intercambiar(arreglo, i, j)
-            i ← i + 1
-    intercambiar(arreglo, i, der)
-    return i
+función encuentraPivoteMaximo(izq, der, arreglo)
+COMIENZO
+    max <- izq
+    Para cada i <- izq + 1 hasta der hacer
+        Si arreglo[i] > arreglo[max] entonces
+            max <- i
+	FinSi
+    FinPara
+    pivote <- arreglo[max]
+    intercambiar(arreglo[max], arreglo[der])
+    i <- izq
+    Para cada j <- izq hasta der - 1 hacer
+        Si arreglo[j] <= pivote entonces
+            intercambiar(arreglo[i], arreglo[j])
+            i <- i + 1
+	FinSi
+    FinPara
+    intercambiar(arreglo[i], arreglo[der])
+    devolver i
+FIN
