@@ -1,0 +1,40 @@
+Primer paso:
+La lista lo que va a tener que hacer es recorrer cada uno de sus nodos, tomando uno como referencia, y comparar su etiqueta con las etiquetas de los nodos que siguen. En caso que se encuentre con un nodo más adelante que tenga la misma etiqueta, ese nodo duplicado se va a tener que eliminar. Para eliminar un nodo, primero es necesario redirigir el puntero del nodo anterior hacia el nodo siguiente del que se va a eliminar, para que la lista no se corte, para luego, que continúe el recorrido desde el siguiente nodo, para seguir buscando y eliminando posibles duplicados.
+
+Segundo paso:
+UnaLista.EliminaDuplicados
+Precondiciones:
+Lista correctamente inicializada.
+Postcondiciones:
+Se eliminan los nodos con etiquetas duplicadas.
+COMIENZO
+nodoActual <- UnaLista.Primero
+Mientras nodoActual <> nulo hacer
+	otroNodo <- nodoActual.Siguiente
+	mientras otroNodo <> nulo hacer
+ 		si otroNodo.Etiqueta = nodoActual.Etiqueta entonces
+			respaldo <- otroNodo.siguiente
+			UnaLista.Elimina(otroNodo)
+			otroNodo <- respaldo
+		si no otroNodo <- otroNodo.Siguiente
+ 		fin si
+	fin mientras
+	nodoActual <- nodoActual.Siguiente
+Fin mientras
+FIN
+
+Tercer paso:
+Nodo nodoActual = UnaLista.Primero;
+while (nodoActual != null) {
+	Nodo otroNodo = nodoActual.Siguiente;
+	while (otroNodo != null) {
+		if (otroNodo.Etiqueta == nodoActual.Etiqueta) {
+			Nodo respaldo = otroNodo.siguiente;
+			UnaLista.Elimina(otroNodo);
+			Nodo otroNodo = respaldo;
+		} else {
+			otroNodo = otroNodo.Siguiente;
+		}
+	}
+	nodoActual = nodoActual.Siguiente;
+} 

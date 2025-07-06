@@ -1,0 +1,73 @@
+Ejercicio 5.1:
+
+encuentraLinealUno(nombreAtributo, valorAtributo)
+COMIENZO
+    Si obtener(nombreAtributo) = valorAtributo entonces
+        devolver true
+    FinSi
+
+    Si hijoIzquierdo <> nulo Entonces
+        Si hijoIzquierdo.encuentraLinealUno(nombreAtributo, valorAtributo) entonces
+            devolver true
+        FinSi
+    FinSi
+
+    Si hijoDerecho <> nulo Entonces
+        Si hijoDerecho.encuentraLinealUno(nombreAtributo, valorAtributo) Entonces
+            devolver true
+        FinSi
+    FinSi
+
+    devolver false
+FIN
+
+Ejercicio 5.2:
+encuentraLinealDos(nombreAtributo, valorAtributo)
+COMIENZO
+	Si obtener(nombreAtributo) = valorAtributo entonces
+        		devolver true
+    	FinSi
+
+    	resultado <- false
+
+    	Si hijoIzquierdo <> nulo entonces
+        		resultado <- hijoIzquierdo.encuentraLinealDos(nombreAtributo, valorAtributo)
+        		Si resultado entonces
+            			devolver true
+        		FinSi
+    	FinSi
+
+    	Si hijoDerecho <> nulo entonces
+        		resultado <- hijoDerecho.encuentraLinealDos(nombreAtributo, valorAtributo)
+        		Si resultado Entonces
+            			devolver true
+        		FinSi
+    	FinSi
+    	devolver false
+FIN
+
+Ejercicio 5.3:
+encuentraLinealTres(nombreAtributo, valorAtributo)
+COMIENZO
+    	Si obtener(nombreAtributo) = valorAtributo entonces
+        		devolver nodo
+    	FinSi
+
+    	resultado <- nulo
+
+    	Si hijoIzquierdo <> nulo entonces
+        		resultado <- hijoIzquierdo.encuentraLinealTres(nombreAtributo, valorAtributo)
+        		Si resultado <> nulo entonces
+            			devolver resultado
+        		FinSi
+    	FinSi
+
+    	Si hijoDerecho <> nulo entonces
+        		resultado <- hijoDerecho.encuentraLinealTres(nombreAtributo, valorAtributo)
+        		Si resultado <> nulo entonces
+            			devolver resultado
+        		FinSi
+    	FinSi
+
+    	devolver nulo
+FIN

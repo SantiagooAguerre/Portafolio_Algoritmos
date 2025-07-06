@@ -1,0 +1,31 @@
+4. Describe las estructuras de datos utilizadas para la implementación de KRUSKAL y analiza / investiga el orden
+del tiempo de ejecución del algoritmo que has desarrollado.
+Estructuras de datos utilizadas:
+- List<TArista> aristas: almacena las aristas ordenadas por costo.
+- Map<Comparable, Integer> componentes: representa los componentes conectados (sin usar Union-Find).
+- TGrafoNoDirigido mst: contiene el árbol generador mínimo resultante.
+
+Análisis del tiempo de ejecución:
+1. Ordenar aristas: O(E log E)
+2. Inicialización de componentes: O(V)
+3. Unión de componentes:
+   - Se recorre cada arista: O(E)
+   - Búsqueda y actualización de componentes: hasta O(V) por cada unión, total O(V^2)
+4. Verificación de conectividad (esConexo()): si se ejecuta dentro del bucle, puede costar O(E(V + E)) en total.
+Por lo tanto, el algoritmo es correcto pero puede ser ineficiente sin estructuras optimizadas.
+
+5. ¿puedes encontrar otras alternativas de implementación mejores?
+Sí. Una implementación con Union-Find (Disjoint Set Union - DSU) mejora sustancialmente la eficiencia.
+- Reemplaza el costoso Map y los recorridos por un conjunto eficiente de operaciones.
+- Union-Find con compresión de caminos y unión por rango opera en O(α(V)) por operación (α es la función inversa de Ackermann).
+Tiempo total con Union-Find:
+- O(E log E) por el ordenamiento de aristas.
+- O(E α(V)) por las uniones, siendo α(V) casi constante.
+- Tiempo total: O(E log E) en la práctica.
+
+6. ¿cuán importante es el consumo de memoria asociado?
+- Ambas implementaciones (manual o con Union-Find) requieren O(V) memoria adicional para seguimiento de componentes.
+- El principal problema no es la memoria, sino la ineficiencia temporal sin Union-Find.
+- El uso de estructuras optimizadas mejora la velocidad sin incrementar significativamente el uso de memoria.
+
+Por lo tanto, el consumo de memoria es razonable, pero el tiempo de ejecución se vuelve crítico en grafos grandes sin Union-Find.

@@ -1,0 +1,129 @@
+Ejercicio 1:
+Árbol
+Insertar(Comparable etiqueta, T unDato)
+Precondiciones: etiqueta <> nulo, unDato <> nulo
+Postcondiciones: Se inserta el nuevo nodo en el árbol en la posición correspondiente manteniendo el orden de los elementos según su etiqueta.
+COMIENZO
+	Si raiz es nulo Entonces  
+    		raiz <- nuevo ElementoAB(etiqueta, unDato)  
+    		devolver verdadero  
+	Sino Si raiz.buscar(etiqueta) es nulo Entonces  
+    		devolver raiz.insertar(nuevo ElementoAB(etiqueta, unDato))  
+	Sino  
+    		devolver falso  
+	FinSi
+FIN
+
+Nodo
+Insertar(IElementoAB<T> elemento) // O(n)
+Precondiciones: elemento <> nulo
+Postcondiciones: Ingresa el nodo al árbol.
+COMIENZO
+	Si elemento.etiqueta < etiqueta Entonces // O(1)
+    		Si hijoIzq es nulo Entonces
+        	hijoIzq <- elemento
+        	devolver verdadero
+    	Sino
+        	devolver hijoIzq.insertar(elemento) // O(n)
+    	FinSi
+	Sino Si elemento.etiqueta > this.etiqueta Entonces // O(1)
+    		Si hijoDer es nulo Entonces // O(1)
+        		hijoDer <- elemento
+        		devolver verdadero
+    		Sino
+       			devolver hijoDer.insertar(elemento) // O(n)
+    		FinSi
+	FinSi
+
+	devolver false
+FIN
+
+Ejercicio 2:
+Árbol
+getAltura() // O(1)
+Precondiciones: arbol <> nulo
+Postcondiciones: Se devuelve la altura del árbol.
+COMIENZO
+	Si esVacio() // O(1)
+		devolver -1
+	FinSi
+	devolver raiz.getAltura() // O(1)
+FIN
+
+Nodo
+getAltura() // O(n)
+Precondiciones: nodo <> nulo
+Postcondiciones: Se devuelve la altura del subárbol cuya raíz es el nodo actual
+COMIENZO
+	A <- -1; B <- -1 
+	Si HijoIzquierdo <> nulo entonces  // O(1)
+		A <- HijoIzquierdo.getAltura()  // O(n)
+	FinSi 
+	Si HijoDerecho <> nulo entonces // O(1)
+		B <- HijoDerecho.getAltura() // O(n)
+	Fin Si 
+	devolver maximo(A,B) + 1 // O(1)
+FIN
+
+Ejercicio 3:
+Árbol
+getSumaClaves() // O(n)
+Precondiciones: árbol <> nulo
+Postcondiciones: Si el árbol no está vacío, el método devuelve la suma de las claves de todos los nodos del árbol.
+COMIENZO
+	Si esVacio() entonces // O(1)
+		devolver 0
+	FinSi
+        devolver raiz.obtenerTamano() // O(n)
+FIN
+
+Nodo
+calcularSumaClaves() // O(n)
+Precondiciones: nodo <> nulo
+Postcondiciones: El método devuelve la suma de las etiquetas del nodo actual y todos sus descendientes.
+COMIENZO
+	int suma <- etiqueta
+	Si hijoizquierdo <> nulo entonces // O(1)
+		suma <- suma + hijoizquierdo.calcularSumaClaves() // O(n)
+	FinSi 
+	Si hijoderecho <> nulo entonces // O(1)
+		suma <- suma + hijoderecho.calcularSumaClaves() // O(n)
+	FinSi
+	devolver suma
+FIN
+
+Ejercicio 4:
+Árbol
+getNivel(Comparable unaEtiqueta) // O(n)
+Precondiciones: árbol <> nulo, unaEtiqueta <> nulo
+Postcondiciones: Si la etiqueta se encuentra en el árbol, el método devuelve el nivel en el que se encuentra la etiqueta.
+COMIENZO
+	Si esVacio() entonces // O(1)
+		devolver -1
+	FinSi
+	devolver raiz.getNivel(unaEtiqueta) // O(n)
+FIN
+
+Nodo
+getNivel(Comparable unaEtiqueta) // O(n)
+Precondiciones: nodo <> nulo, unaEtiqueta <> nulo
+Postcondiciones: devolver el nivel de un nodo en todo un subárbol o directamente el árbol entero.
+COMIENZO
+	Si unaEtiqueta.compareTo(etiqueta) = 0 entonces // O(1)
+            devolver 0
+        FinSi
+        int nivel <- -1;
+        Si hijoIzq <> nulo entonces // O(1)
+            nivel = hijoIzq.getNivel(unaEtiqueta) // O(n)
+            Si nivel <> -1 entonces // O(1)
+                devolver nivel + 1
+            FinSi
+        FinSi
+        Si hijoDer <> nulo entonces // O(1)
+            nivel <- hijoDer.getNivel(unaEtiqueta) // O(n)
+            Si nivel <> -1 entonces // O(1)
+                devolver nivel + 1;
+            FinSi
+        FinSi
+        devolver nivel
+FIN

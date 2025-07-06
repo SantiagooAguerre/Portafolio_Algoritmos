@@ -1,0 +1,17 @@
+UT1_PD4
+
+Ejercicio 1:
+
+	a) La variable de clase es el x
+
+	b) La variable de instancia es el y
+
+La salida es:
+
+	a.y = 5
+	b.y = 6
+	a.x = 2
+	b.x = 2
+	IdentifyMyParts.x = 2
+
+Esto debido a que el x al ser estático pertenece a la clase, entonces no se cambia individualmente.

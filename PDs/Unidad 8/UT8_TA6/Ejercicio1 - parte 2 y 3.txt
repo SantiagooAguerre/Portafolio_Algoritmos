@@ -1,0 +1,62 @@
+Ejercicio 2: 
+Se podria utilizar hash maps para poder representar el conjunto de vértices del grafo, y listas para poder guardas las aristas elegidas para el AAM resultante.
+A la TDA lista le tendríamos que agregar:
+
+Un método para añadir en un índice determinado,
+un método para añadir todos los elementos de una lista en otra
+y un método para extraer el primer elemento (que devuelva y elimine el primer elemento de la lista)
+
+Ejercicio 3:
+COMIENZO
+    artistasKruskal <- nueva listaEnlazada
+    vertices = getVertices
+    Si !vertices.esVacio() entonces
+        desvisitarVertices()
+        colecciones <- nuevo HashMap(vertices.tamanio)
+        colTemp
+    FinSi
+
+    Para cada v en verties.valores hacer
+        colTemp <- nueva ListaEnlazada()
+        colTemp.insertar(v)
+        colecciones.put(v.obtenerEtiqueta, colTemp)
+    FinPara
+
+    aristasOrdenadas <- nueva ListaEnlazada
+    paraAristas:
+    Para cada a en lasAristas
+        Si aristasOrdenadas.EstaVacio() o aristasOrdenadas.obtenerPrimero().obtenerCosto() < a.obtenerCosto entonces
+            aristasOrdenadas.insertarPrimero(a)
+            continuar
+        FinSi
+        i =1
+        Para i < aristasOrdenadas.tamanio hacer
+            Si aristasOrdenadas.obtener(i).obtenerCosto > a.obtenerCosto()
+                aristasOrdenadas.insertar(i-1, a)
+                continuar paraAristas
+            FinSi
+            i++
+        FinPara
+        aristasOrdenadas.insertar(a)
+    FinPara
+    menorArista
+    ListaEnlazada colOrigen
+    ListaEnlazada colDestino
+    Mientras !aristasOrdenadas.esVacio() hacer
+        menorArista <- aristasOrdenadas.obtenerPrimero()
+        colOrigen <- colecciones.obtener(menorArista.etiquetaOrigen)
+        colDestino <- colecciones.obtener(menorArista.etiquetaDestino)
+        Si colOrigen <> colDestino
+            colOrigen.añadirTodo(colDestino)
+            Para cada v en colDestino hacer
+                Si coleciones.obtener(v.obtenerEtiqueta()) != colOrigen entonces
+                    colecciones.actualizar(v.obtenerEtiqueta, colOrigen)
+                FinSi
+            FinPara
+            aristasKruskal.insertar(menorArista)
+        FinSi
+    FinMientras
+
+    grafo <- nuevo TGrafoNoDirigido(vertices.valores(), aristasKruskal)
+    devolver grafo
+FIN

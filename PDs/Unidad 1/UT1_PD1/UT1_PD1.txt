@@ -1,0 +1,53 @@
+Ejercicio 1:
+
+	No, yo pac.
+	Vos zacata pac.
+	Yo pac.
+
+Ejercicio 2:
+
+	a) La primera sentencia que se ejecuta es el sipo ("traqueteo", 13), si con sentencia se refiere a la primera ejecución que muestre algo por pantalla, seria el System.out.println ("ik");.
+
+	b)
+
+	public class Zumbido {
+		public static void desconcertar (String dirigible) {
+	6		System.out.println (dirigible);
+	7		sipo ("ping", -5);
+		}
+		public static void sipo (String membrillo, int flag) {
+	2-8		if (flag < 0) {
+	9			System.out.println (membrillo + " sup");
+	3		} else {
+	4			System.out.println ("ik");
+	5			desconcertar (membrillo);
+	10			System.out.println ("muaa-ja-ja-ja");
+			}
+		}
+		
+		public static void main (String[] args) {
+	1		sipo ("traqueteo", 13);
+		}
+	}
+
+Ejercicio 4:
+
+	a) El error en la clase alumno es que el nombre es null, o mas bien que se le asigna un valor null al nombre, por lo que no puede concatenar nada. Mi solución es sacarle el nombre = null, y asignarle un valor a null, o simplemente ponerle al nombre que es igual a "". También se le puede plantear un if donde si el nombre es null, devolver un string que diga "el nombre es null, ingréselo de nuevo".
+
+	b) Acá el error viene de todo el for, ya que en el charAt de después se considera la cantidad a partir de 0, y en el length llega hasta 4, contándolo también, cosa que después da error ya que en el charAt no existe el index 4, que es el error que marca el java al momento de ejecutar el programa. Mi solución es poner en el for lo siguiente: for (int i = 0; i < cadena.length(); i++). Esto lo que hace es salir del for cuando llega hasta la cadena, sin tomar en cuenta el 4, por lo que lo no va a buscar un charAt que no existe, en adición a esto, le puse que arranque a contar desde 0, ya que no lo está tomando en cuenta a la primera letra.
+
+	c) Este error va por el mismo lado que el anterior, y es que se está buscando un index que no existe, y es que si bien hay 8 indexs que se pueden buscar, no existe el 8, ya que se arranca a contar desde 0, por lo que la solución y la forma de cambiarlo es simplemente elegir un valor de idx que esté entre 0 y 7, o si no plantear un if donde si el idx no existe, que devuelva 0. Lo que sería algo así: 
+
+if (idx >= vector.length || idx < 0) {
+            return 0;
+        } else {
+            return vector[idx];
+        }
+
+O también restarle uno al idx al momento de retornar, lo que quedaría así: return vector[idx - 1];
+
+	d) En este método el error es que en ningún momento se le asigna a string[1] el valor de palabra, por lo que crashea al dar null. La solución es simplemente ingresar el valor palabra al espacion 1, lo que quedaría así: string[1] = palabra; Y en adición le voy a cambiar en el charAt el 1 por 0, ya que al tener el 1 no está recibiendo el primer carácter, si no el segundo.
+
+	e) El error viene que hay que escribir x1.toString() para poder devolverlo correctamente, ya que el "(String)" funcionaria si no se hubiera puesto el integer que es de tipo int. Me di cuenta del error por lo que devolvía la consola, ya que decía que el integer no podía ser casteado a String al no estar relacionados.
+	
+	

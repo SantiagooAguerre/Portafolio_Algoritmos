@@ -1,0 +1,143 @@
+Ejercicio 1:
+1.
+calcularFactorial(int numero) // O(n)
+Precondiciones: numero => 0, numero <> nulo
+Postcondiciones: devolver el factorial del numero ingresado.
+COMIENZO
+	Si numero = 1 o numero = 0 entonces // O(1)
+		devolver 1
+	FinSi
+	contador <- numero - 1 // O(1)
+	devolver numero * factorial(contador) // O(n)
+FIN
+
+- Identifica claramente el caso base y la sentencia que lo contempla:
+El caso base es cuando el numero sea 1 o 0, siendo la sentencia especifica:
+Si numero = 1 o numero = 0 entonces
+	devolver 1
+FinSi.
+
+- ¿Puedes verificar que siempre el algoritmo progresará hacia el caso base?
+Llegará si, y es porque el contador se va restando, y este se va ingresando en la reiteración del factorial, por lo que en algún momento va a llegar al caso base.
+
+2. Analiza el orden del tiempo de ejecución del algoritmo.
+El tiempo de ejecución es O(n)
+
+3. Implementa el algoritmo (en JAVA) y pruébalo:
+-  ¿Qué sucede si el número es negativo?
+Si en el numero se ingresa un numero negativo, este se romperá, con el error:
+Exception in thread "main" java.lang.StackOverflowError at paquete.Principal.Factorial(Principal.java:24). 
+
+Este error será así porque nunca va a llegar al caso base, por lo que dará error de tipo stackOverFlow, ya que se genero una reiteración infinita.
+
+Ejercicio 2:
+1.
+SumaLineal(ArrayList<Integer> arreglo, int n) // O(n)
+Precondiciones: valores de arreglo <> nulo, n <> nulo
+Postcondiciones: devolver la suma de los arreglos en formato int
+COMIENZO
+	n <- n - 1
+	Si arreglo.esVacio() entonces // O(1)
+		devolver 0
+	FinSi
+	Si n < 0 o n >= arreglo.size() entonces // O(1)
+		devolver 0
+	FinSi
+	suma <- arreglo.get(n)
+	arreglo.remove(arreglo.size() - 1)
+	devolver suma + SumaLineal(arreglo, n) // O(n)
+FIN
+
+- Identifica claramente el caso base y la sentencia que lo contempla:
+Los casos base son los:
+Si arreglo.esVacio() entonces
+	devolver 0
+FinSi
+y el
+Si n < 0 o n >= arreglo.size() entonces // O(1)
+	devolver 0
+FinSi
+
+- ¿Puedes verificar que siempre el algoritmo progresará hacia el caso base?
+Si llega al caso base, debido a que se restan tanto el n, como sacar los valores del arreglo, y estos mismos valores son los que se usan en la reiteración hasta llegar a alguno de los casos base.
+
+2. Analiza el orden del tiempo de ejecución del algoritmo.
+El orden de tiempo de ejecución es O(n)
+
+3. Implementa el algoritmo (en JAVA) y pruébalo:
+- ¿Qué sucede si el parámetro n es negativo?
+Si el parámetro es negativo, va a imprimir 0, debido a que plantee que en caso de que el n sea menor que 0, entonces devolvía 0.
+
+- ¿Qué sucede si el vector A está vacío?
+Si es vacio, va a imprimir 0, por el planteo de que:
+Si arreglo.esVacio() entonces
+	devolver 0
+FinSi
+
+Ejercicio 3:
+1. 
+Potencia(int numero, int exponente)
+Precondiciones: numero <> nulo, exponente <> nulo, exponente => 0
+Postcondiciones: devuelve la potencia del numero elevado al exponente
+COMIENZO
+	Si exponente = 0 y numero = 0 entonces // O(1)
+		return -1
+	FinSi
+	Si exponente = 0 entonces // O(1)
+		return 1
+	FinSi
+	Si exponente = 1 entonces // O(1)
+		return numero
+	FinSi
+
+	devolver numero * Potencia(numero, exponente - 1) // O(n)
+FIN
+
+- Identifica claramente el caso base y la sentencia que lo contempla.
+El caso base es cuando el exponente es igual a 1, ya que retorna el numero. Es específicamente este codigo:
+Si exponente = 1 entonces
+	return numero
+FinSi
+
+- ¿Puedes verificar que siempre el algoritmo progresará hacia el caso base?
+Se puede verificar ya que el exponente se resta y en lo que se evalúa anteriormente mencionado (o sea, el caso base), este siempre llegará hasta ahí.
+
+2. Analiza el orden del tiempo de ejecución del algoritmo.
+El orden del tiempo de ejecución es O(n)
+
+3. Implementa el algoritmo (en JAVA) y pruébalo:
+- ¿Tu algoritmo soporta números reales o sólo enteros – para ambos parámetros?
+El algoritmo solo soporta enteros, debido a que utilicé int para cada una de las variables, por lo que no acepta reales, a menos que utilice double.
+
+- ¿qué sucede si uno, otro o ambos parámetros son negativos?
+En caso de poner el numero como negativo, este si se va a ejecutar, el problema es cuando el exponente se pone como entero negativo, ya que da error al tratar de hacer la potencia de este.
+
+Ejercicio 4:
+1.
+InvertirComponentes(int[] vector, int indiceInicial, int indiceFinal)
+Precondiciones: vector <> nulo, indiceInicial <> nulo, indiceFinal <> nulo, indiceInicial => 0, indiceFinal => 0
+Postcondiciones: invierte los valores del vector desde indiceInicial hasta indiceFinal
+COMIENZO
+	Si indiceInicial >= indiceFinal entonces // O(1)
+		devolver 0
+	FinSi
+	
+	numero <- vector[indiceInicial]
+	vector[indiceInicial] <- vector[indiceFinal]
+	vector[indiceFinal] <- numero
+	
+	devolver InvertirComponentes(vector, indiceInicial + 1, indiceFinal - 1) // O(n)
+FIN
+
+- Identifica claramente el / los caso(s) base y la(s) sentencia(s) que lo contempla(n).
+El caso base que se contempla en este codigo es el:
+Si indiceInicial >= indiceFinal entonces // O(1)
+	devolver 0
+FinSi
+
+- ¿Puedes verificar que siempre el algoritmo progresará hacia el caso base?
+Se puede verificar notando que el caso base es justo lo que estoy buscando lograr en la sentencia devolver "InvertirComponentes(vector, indiceInicial + 1, indiceFinal - 1)".
+
+2. Analiza el orden del tiempo de ejecución del algoritmo.
+El orden de tiempo de ejecución es O(n).
+

@@ -1,0 +1,25 @@
+Ejercicio 1:
+controlCorchetes(listaDeEntrada) O(n)
+Precondiciones: listaDeEntrada <> nulo
+Postcondiciones: Va a devolver true si la cantidad de corchetes cierra, devuelve false si no cierra
+COMIENZO
+pila <- nueva Pila() O(1)
+contador <- 0 O(1)
+Mientras contador < listaDeEntrada.length() entonces O(n)
+	Si listaDeEntrada[contador] = "{" O(1)
+		pila.push("{") O(1)
+	Sino
+		Si pila.esVacio() entonces O(1)
+			devuelve false 
+		Sino O(1)
+			pila.pop() O(1)
+		FinSi 
+	FinSi
+	contador <- contador + 1 O(1)
+FinMientras
+Si pila.esVacio() entonces O(1)
+	devuelve true
+Sino O(1)
+	devuelve false
+FinSi
+FIN

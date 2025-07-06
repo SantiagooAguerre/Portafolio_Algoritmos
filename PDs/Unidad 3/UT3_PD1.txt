@@ -1,0 +1,36 @@
+Ejercicio 1:
+PoneEnCola(unElemento)
+Precondiciones: cola no llena, unElemento != nulo
+Postcondiciones: se agrega unElemento a la cola
+COMIENZO
+Si primero = nulo entonces
+	primero <- unElemento
+	ultimo <- unElemento
+	ultimo.siguiente <- primero
+Sino
+	ultimo.siguiente <- unElemento
+	ultimo <- ultimo.siguiente
+	ultimo.siguiente <- primero
+FinSi
+FIN
+
+Ejercicio2:
+QuitaDeCola()
+Precondiciones:
+Postcondiciones: Se devuelve el elemento eliminado
+COMIENZO
+Si primero = nulo entonces
+	devuelve nulo
+FinSi
+
+actual <- primero
+
+Si primero = ultimo entonces
+	primero <- nulo
+	ultimo <- nulo
+Sino	
+	primero <- primero.siguiente
+	ultimo.siguiente <- primero
+FinSi
+devuelve actual
+FIN

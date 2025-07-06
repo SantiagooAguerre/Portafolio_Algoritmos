@@ -1,0 +1,22 @@
+Ejercicio 2:
+buscarNodoTrie(string palabra)
+COMIENZO
+    nodo <- this
+    para cada c hasta palabra.largo() hacer
+        indice <- palabra.caracterEnPosicion(c) - a
+        si (nodo.hijos[indice] == nulo)
+            devolver nulo
+        fin si
+        nodo <- nodo.hijos[indice]
+    Fin para cada
+    devolver nodo
+FIN
+
+buscar(string palabra)
+COMIENZO
+    nodo <- buscarNodoTrie(palabra)
+    si (nodo <> nulo y nodo.esPalabra)
+        devolver 1
+    fin si
+    devolver 0
+FIN

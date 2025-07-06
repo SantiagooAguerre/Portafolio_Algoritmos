@@ -1,0 +1,20 @@
+Ejercicio 1.2:
+
+Lenguaje natural: Va a ir recorriendo nodo por nodo y va a verificar si esa letra se encuentra en la palabra que quiero ingresar, en caso que no esté, la ingresa y así constantemente hasta que ingresa toda la palabra y le asigna un esPalabra igual a verdadero.
+
+Árbol insertar(String palabra) // O(d*m), m es el largo de la palabra y d es el tamaño del alfabeto
+
+Precondiciones: palabra <> nulo, árbol <> nulo
+Postcondiciones: Insertar una palabra en el trie, recorriendo las letras y en caso de que otra palabra no las tenga, las va ingresando.
+COMIENZO
+	nodo = this
+	Para cada c desde 0 hasta unaPalabra.largo() hacer
+    		índice <- unaPalabra.caracterEnPosicion(c) - a
+    		Si (nodo.hijos[indice] = nulo) entomces
+        		nodo.hijos[indice] <- nuevo TnodoTrie()
+    		Fin Si
+    	nodo <- nodo.hijos[indice]
+    	Fin Para cada
+
+	nodo.esPalabra = verdadero
+FIN

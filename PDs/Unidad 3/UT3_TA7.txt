@@ -1,0 +1,84 @@
+Ejercicio 1:
+
+1) Un conjunto es una colección bien definida de elementos o miembros. Los elementos pueden ser cualquier cosa: números, letras, objetos, etc.
+
+2) La pertenencia de un elemento a un conjunto se indica con el símbolo ∈. Por ejemplo, si el conjunto A contiente el numero 1, se escribe como que 1 ∈ A.
+
+La propiedad clave de los conjuntos es que no pueden contener duplicados, entonces si un elemento ya está en el conjunto, no se repite.
+
+3) El conjunto universal (que se escribe como U) es el conjunto que tiene todos los elementos bajo consideracion en un contexto especifico. Por ejemplo, si estamos trabajando con números naturales, el conjunto universal podría ser U = {0,1,2,3,...}
+
+4) Las operaciones sobre conjuntos son Unión, intersección, diferencia y complemento.
+La unión se expresa como U, por ejemplo A U B.
+La intersección se expresa como ∩, por ejemplo A ∩ B.
+La diferencia se expresa como -, por ejemplo A - B.
+Y el complemento se expresa como A^c.
+
+Ejercicio 2 (Union):
+
+TDALista Union(TDALista Lista1, TDALista Lista2)
+Precondiciones:
+Postcondiciones: Devuelve una lista con la unión entre la Lista1 y la Lista2
+COMIENZO
+listaunida <- nulo
+
+Si Lista1.esVacio() y Lista2.esVacio() entonces
+	devolver nulo
+FinSi
+
+Si Lista1.esVacio() entonces
+    nodoActual <- Lista2.comienzo
+    Mientras nodoActual <> nulo Hacer
+        listaunida <- Insertar(nodoActual.dato)
+        nodoActual <- nodoActual.siguiente
+    FinMientras
+    devolver listaunida
+FinSi
+
+Si Lista2.esVacio() entonces
+    nodoActual <- Lista1.comienzo
+    Mientras nodoActual <> nulo Hacer
+        listaunida <- Insertar(nodoActual.dato)
+        nodoActual <- nodoActual.siguiente
+    FinMientras
+    devolver listaunida
+FinSi
+
+nodoActual <- Lista1.comienzo
+
+Mientras nodoActual <> nulo hacer
+	listaunida.insertar(nodoActual.dato)
+	nodoActual <- nodoActual.siguiente
+FinMientras
+
+nodoActual <- Lista2.comienzo
+
+Mientras nodoLista2 <> nulo hacer
+	Si listaunida.buscar(nodoLista2) = nulo entonces
+		listaunida.insertar(nodoLista2.dato)
+	FinSi
+FinMientras
+FIN
+
+Ejercicio 2 (Interseccion):
+
+TDALista Interseccion(TDALista Lista1, TDALista Lista2)
+Precondiciones: 
+Postcondiciones: Devuelve una lista con la intersección entre la Lista1 y la Lista2
+COMIENZO
+    listaInterseccion <- nulo
+
+    Si Lista1.esVacio() o Lista2.esVacio() entonces
+        devolver listaInterseccion
+    FinSi
+
+    nodoActual1 <- Lista1.comienzo
+
+    Mientras nodoActual1 <> nulo hacer
+        Si Lista2.buscar(nodoActual1.dato) <> nulo y listaInterseccion.buscar(nodoActual1.dato) = nulo entonces
+            listaInterseccion.insertar(nodoActual1.dato)
+        FinSi
+        nodoActual1 <- nodoActual1.siguiente
+    FinMientras
+    Devolver listaInterseccion
+FIN

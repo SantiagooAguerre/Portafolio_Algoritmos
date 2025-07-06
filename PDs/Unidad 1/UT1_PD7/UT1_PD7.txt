@@ -1,0 +1,25 @@
+UT1_PD5
+
+Ejercicio 1:
+
+	El problema radica en que el == compara objetos, no su contenido, por lo que el problema radica en que está haciendo mal el comparativo, si se quisiera hacer correctamente, se tendria que escribir "!s.equals("1000")", lo que permitiría el correcto comparativo entre Strings. La diferencia con c# es que ahí si compara el contenido, por lo que el == se estaría haciendo correctamente entre el contenido del s con el string "1000".
+
+Ejercicio 2:
+
+	En el primer caso el resultado que se va a mostrar va a ser true, ya que ambas variables apuntan al mismo espacio de memoria, por ende el comparativo de las referencias de objetos va a dar positivo, esto se relaciona con lo que se conoce como String pool, que es donde justamente se guardan todos estos elementos string en la memoria, esta información sacada de la siguiente pagina:
+
+https://www.digitalocean.com/community/tutorials/what-is-java-string-pool
+
+	En el segundo va a dar false, ya que con el new se esta creando un nuevo objeto en la memoria para el new String "Hola", por ende, al no estar comparando como tal su contenido, este va a dar false, ya que no apuntan al mismo objeto. En caso de querer un resultado true, se tendría que agregar lo que la propia propuesta sugiere, que en el comparativo de (s1 == s2), agregarle in intern() al s1, haciendo que de esta manera el s1 verifique si tiene ya un espacion en el string pool, por lo que daría positivo ya que el s2 ya está haciendo referencia al "Hola".
+
+Información del intern():
+
+https://stackoverflow.com/questions/10578984/what-is-java-string-interning
+
+Versión corregida del código del Ejercicio #1:
+
+String s = "1";
+while (!s.equals("1000")) {
+    s += "0";
+}
+

@@ -1,0 +1,153 @@
+Ejercicio 5.4:
+	a) Verdadero, ya que si ambas funciones son O(F(N)), significa que su suma va a seguir siendo O(F(N))
+
+	b) Verdadero, ya que la resta de dos funciones acotadas por F(N) también está limitado por una constante F(N).
+
+	c) Falso, ya que si T1(N) = N, T2(N) = 1, ambos son O(N) pero N/1 terminaría siendo distinto de O(1).
+
+	d) Falso, ya que si ambas son O(F(N)), no quiere decir que una sea limitada por la otra. Por ejemplo:
+T1(N) = N
+T2(N) = N^2
+Ambas son O(N^2), pero T2(N) es distinto de O(T1(N))
+
+
+Ejercicio 5.5:
+	Cuando se ejecutan dos algoritmos secuencialmente, su costo total es la suma de sus complejidades, quedando O(N) + O(N) = O(N), por lo que ese seria el coste total.
+
+Ejercicio 5.6:
+	x^2 = O(x^2)
+	x = O(x)
+	x^4 + x = O(x^4)
+	x^2 - x = O(x^2)
+	x^4/(x-1) = O(x^3)
+
+	O(x) = x
+	O(x^2) = x^2 y x^2 - x
+	O(x^3) = x^4/(x-1)
+	O(x^4) = x^4 + x
+
+Ejercicio 5.10:
+	N	O(N^3)		O(N^2)		O(N log N)	O(N)
+     100.000    218.000		13,7		0,017467	0,005571
+    1.000.000   218.000.000	1.317		0,185363	0,056338
+   10.000.000   2,18.10^11	131.700		2,13		0,563
+
+Ejercicio 5.11:
+	Sea k∈[1,N]. Para cada valor fijo de k.
+		i puede ir desde 1 hasta k (porque i <= k) hay k opciones
+		k puede ir desde k hasta N (porque k <= j) hay N - k + 1 opciones
+	Entonces para un valor fijo de k, el numero de tripletas es
+		Cantidad para un k = k . (N - k + 1)
+
+Ejercicio 5.12:
+	a) C = 0,4/100 = 0,004
+	T(500) = 0,004.500 = 2ms
+
+	b) Para N = 100
+		C . 100 . 6,64 = 0,4/664 = 0,000602
+	   
+	   Para N = 500
+		T(500) = 0,000602 . 500 . 8,97 = 2,7ms
+
+	c) Para N = 100
+		C = 0,4/10.000 = 0,00004
+		T(500) = 0,00004 . 250.000 = 10ms
+
+	d) Para N = 100
+		C = 0,0000004/1.000.000 = 0.0000004
+		T(500) = 0,0000004 . 125.000.000 = 50ms
+
+Ejercicio 5.13:
+a) Cuando sumas dos números de N dígitos (por ejemplo: 345 + 789), haces lo siguiente:
+
+- Se suma cada par de dígitos correspondientes
+
+- Carreas si la suma supera 9
+
+- Esto se hace una sola vez por cada posición decimal, haciendolo de derecha a izquierda
+
+Complejidad:
+
+- Hay N sumas de un dígito
+
+- Cada suma es una operación constante, siendo O(1)
+
+Entonces, la complejidad total es O(N)
+
+b) En la multiplicacion:
+
+- Se multiplica cada digito del primer numero con cada digito del segundo numero.
+
+- Hay N digitos en cada numero -> N . N = N^2 multiplicaciones de un solo digito
+
+- Luego se suman los resultados
+
+Complejidad:
+
+- Las multiplicaciones dominan el costo
+
+- Cada una toma tiempo constante, pero hat N^2 de ellas
+
+Entonces la complejidad total es O(N^2)
+
+Ejercicio 5.14:
+int maxSuma = 0;
+for (int i = 0; i < n; i++) {
+    for (int j = i; j < n; j++) {
+        int suma = 0;
+        for (int k = i; k <= j; k++) {
+            suma += A[k];
+        }
+        if (suma > maxSuma)
+            maxSuma = suma;
+    }
+}
+
+La instruccion más interna es suma += A[k], y se ejecuta:
+
+n(n+1)(n+2)/6
+
+Ejercicio 5.15
+a) Si 10 segundos para 1000 entonces k = 10/1000 = 0,01
+Para 2500 elementos:
+Maquina A: T = 0,01 . 2500 = 25 segundos
+Maquina B: 25/3 = 8,33 SEGUNDOS
+
+b) Si 10 segundos para 1000 entonces k = 10/1000^2 = 0,01
+Para 2500 elementos:
+Maquina A: T = 0,00001 . 2500^2 = 62,5 segundos
+Maquina B: 62,5/3 = 20,83 SEGUNDOS
+
+c) Si 10 segundos para 1000 entonces k = 10/1000^3 = 0,00000001
+Para 2500 elementos:
+Maquina A: T = 0,00000001 . 2500^3 = 156,25 segundos
+Maquina B: 156,25/3 = 52,08 SEGUNDOS
+
+d) Primero agarramos k usando T = k . N log2N
+Para 1000 elementos:
+log2 1000 = 9,97
+k = 10/1000 . 9,97 = 0,001003
+
+Para 2500 elementos
+log2 2500 = 11,29
+Maquina A: 0,001003 . 2500 . 11,29 = 28,2 segundos
+Maquina B: 28,2/3 = 9,4 SEGUNDOS
+
+Ejercicio 5.16:
+a) 0,5 = k . 100 = -> k = 0,005
+
+60,000 = 0,005 . N -> N = 60.000/0,005 = 12.000.000
+
+b) 0,5 = k . 100 . log2 100 -> k . 100 . 6,64 -> k = 0,5/664 = 0,0007525
+
+60,000 = 0.0007525 . Nlog2 N
+
+N = 427.000 (aproximadamente)
+
+c) 0,5 = k . 100^2 -> k = 0,5/10.000 = 0,00005
+
+60.000 = 0,00005 . N^2 -> N^2 = 60.000 / 0,00005 = 1.200.000.000 -> N = 34,641
+
+d) 0,5 = k . 100^3 = k . 1.000.000 -> k = 0,5/1.000.000 = 0,0000005
+
+60.000 = 0,0000005 . N^3 -> N^3 = 60.000/0,0000005 = 120.000.000.000 -> N = 4.932

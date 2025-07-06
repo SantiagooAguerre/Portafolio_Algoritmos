@@ -1,0 +1,29 @@
+Ejercicio 1:
+El hashCode es un método que implementa la función hash, que devuelve un entero en base a un objeto para indizar una matriz, que puede ser usada para los distintos tipos de datos. En el caso del tipo de dato Object la dirección de memoria del objeto. Para los enteros el hashCode devuelve el mismo entero que recibe. En el caso de las cadenas de caracteres, devuelve la sumatoria del código ASCII de cada uno de los caracteres multiplicado por 31 a la n menos 1 (siendo n la longitud de la palabra) en cada caso.
+Esta diferencia en implementaciones se debe a que el método hashCode debe encontrar un criterio por el cual transformar cualquier tipo de dato en un entero de forma que se eviten colisiones lo más posible y que se generen la mayor cantidad de enteros distintos posibles, para ordenar equitativamente los objetos en la matriz dada. 
+
+Ejercicio 2:
+Los HashMaps son arreglos de listas enlazadas. Cuando dos objetos tienen el mismo hash, la colisión se soluciona agregando esos objetos en la lista enlazada de la misma posición. 
+"Hola" queda en la posición 14, "HolaMundo" en la posición 9, "HashMap" en la posición 5, y "Colecciones" en la 13.
+
+Ejercicio 3: 
+Para implementar el método equals en la clase Alumno, debemos comparar los IDs de cada alumno. Para implementar el hashCode tomaremos primero el hashCode del ID, el cual multiplicaríamos por 31 y por el hashCode del nombre del alumno.
+
+public boolean equals(Object alumno) {
+	if (this == alumno) { 
+		return true 
+	}
+
+	if (!(alumno instanceof Alumno)) { 
+		return false 
+	}
+
+	Alumno otroAlumno = (Alumno) alumno;
+	return Integer.compare(this.ID, otroAlumno.ID) == 0 && 	this.fullName.equals(otroAlumno.fullName) && this.ID.equals(otrAlmuno.ID)
+}
+
+public int hashCode() {
+        int result = Integer.hashCode(ID);
+        result = 31 * result + fullName.hashCode() + email.hashCode();
+        return result;
+    }

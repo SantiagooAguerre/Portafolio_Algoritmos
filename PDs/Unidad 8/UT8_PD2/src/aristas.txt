@@ -1,0 +1,7 @@
+Nairobi,Cairo, 1
+Nairobi,Monrovia,2
+Nairobi,Garoua,4
+Monrovia,Garoua,10
+Monrovia,Mekele,1
+Garoua,Mekele,4
+Mekele,Praia,7

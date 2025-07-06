@@ -1,0 +1,37 @@
+ordenaParesImpares()
+COMIENZO
+	Lista nuevaListaImpares <- nulo
+	Lista nuevaListaPares <- nulo
+	Para cada elemento en artículos hacer
+		Si elemento mod 2 = 0 entonces
+			nuevaListaPares.agregar(elemento)
+		Sino
+			nuevaListaImpares.agregar(elemento)
+		FinSi
+	FinPara
+
+	Lista nuevaListaOrdenadaImpares <- nulo
+        Para cada elemento en nuevaListaImpares hacer
+            insertarenOrdenAscendente(nuevaListaOrdenadaImpares, elemento)
+        FinPara
+
+        Lista nuevaListaOrdenadaPares <- nulo
+        Para cada elemento en nuevaListaPares hacer
+            insertarenOrdenAscendente(nuevaListaOrdenadaPares, elemento)
+        FinPara
+
+        artículos <- concatenar(nuevaListaOrdenadaImpares, nuevaListaOrdenadaPares)
+FIN
+
+insertarenOrdenAscendente(lista, elemento)
+COMIENZO
+	Si lista está vacía entonces
+            lista.agregar(elemento)
+        Sino
+            contador <- 0
+            Mientras contador < lista.tamaño y lista[contador] < elemento hacer
+                contador <-- contador + 1
+            FinMientras
+            lista.insertar(contador, elemento)
+        FinSi
+FIN

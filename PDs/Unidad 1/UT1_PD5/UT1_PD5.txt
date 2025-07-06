@@ -1,0 +1,190 @@
+UT1_PD5
+
+Ejercicio 1:
+
+	1) Para probar el método lo que hice fue crear un enum con los diferentes significados y colores que tiene el semáforo.
+
+	public enum Colores {
+        rojo, amarillo, verde;
+    }
+    
+    Colores colorito;
+    
+    public Principal(Colores colorito) {
+        this.colorito = colorito;
+    }
+    
+    public void Semaforo() {
+        switch(colorito) {
+            case rojo:
+                System.out.println("PARE");
+                break;
+            case amarillo:
+                System.out.println("CUIDADO");
+                break;
+            case verde:
+                System.out.println("AVANCE");
+                break;
+            default:
+                System.out.println("no identificado");
+                break;
+        }
+        
+    }
+    
+    public static void main(String[] args) {
+        Principal dia = new Principal(Colores.rojo);
+        dia.Semaforo();
+    }
+
+	
+Ejercicio 3:
+
+	En el codigo el error es que en ningún momento se guarda la ubicación de las comas, puntos o punto y coma, por lo que simplemente invierte el texto sin tomar en cuenta que la coma va a estar mal posicionada. Lo segundo son las mayúsculas que van por el mismo lado, estas simplemente se invierten sin tomar en cuenta que van a estar posicionadas las mayúsculas en el lugar del anterior texto. Mi solución para el segundo problema es pasar todo el texto a minúscula, para esto lo que escribí fue:
+
+	for (int i = 0; i < len; i++) {
+            tempCharArray[i] = Character.toLowerCase(palindrome.charAt(i));
+        }
+
+	Mientras que para el primer problema lo que pensé fue directamente eliminar las comas, puntos y punto y coma, porque si no, el palíndromo no se va a ver bien, y para esto agregué en el codigo un par de if's y el enum para eliminar estos signos. El código está en esta misma carpeta
+
+Ejercicio 5:
+
+	1) La salida al momento de ejecutar el codigo es:
+
+	3 digits before decimal point.
+	2 digits after decimal point.
+
+	Lo que hizo el codigo fue recibir un double e identificar cuantos números hay antes y después del punto decimal.
+
+	2) El codigo lo primero que hace es guardar en la variable dot los primeros números del doublé hasta llegar al punto, para luego imprimirlo. Después para mostrar los números que hay después del punto lo que hace el programa es restarle a la cantidad de números la variable dot y menos 1, este ultimo por el detalle de que el length siempre arranca en 0.
+
+Ejercicio 6:
+
+Ejemplo: "como estas"
+
+substring(int beginIndex) - Extrae desde beginIndex.
+"como estas".substring(5) -> "estas"
+
+substring(int beginIndex, int endIndex) - Devuelve una subcadena del String, desde beginIndex hasta endIndex.
+"como estas".substring(0, 4) -> "como"
+
+split(String regex) - Divide según regex.
+"como estas".split(" ") -> ["como", "estas"]
+
+split(String regex, int limit) - Divide el String en un array usando una expresión regular como delimitador, limit define cuántas divisiones se hacen como máximo.
+"como estas estas".split(" ", 2) -> ["como", "estas estas"]
+
+subSequence(int beginIndex, int endIndex) - Permite separar un string de un punto A, a un punto B, imprimiendo solamente ese rango que se marcó. Devuelve CharSequence.
+"como estas".subSequence(5, 10) -> "estas"
+
+trim() - Saca los espacios del principio y del final de un string.
+" como estas ".trim() -> "como estas"
+
+toLowerCase() - Convierte todas las letras en minúscula.
+"CoMo EsTaS".toLowerCase() -> "como estas"
+
+toUpperCase() - Convierte todas las letras en mayúscula.
+"como estas".toUpperCase() -> "COMO ESTAS"
+
+indexOf(String str) - Permite hacer una búsqueda de una palabra, letra o símbolo dentro de un string, siendo el criterio en este caso str.
+"como estas".indexOf("o") -> 1
+
+indexOf(String str, int fromIndex) - Lo mismo que el anterior, pero ahora podes buscar str desde fromIndex, o sea podés poner un rango de desde donde querés revisar el string.
+"como estas".indexOf("o", 2) -> 3
+
+lastIndexOf(String str) - Muestra en que index estuvo la ultima mención del str especificado.
+"como estas".lastIndexOf("o") -> 3
+
+lastIndexOf(String str, int fromIndex) - Lo mismo que el anterior pero pudiendo poner como segundo parámetro hasta donde se va a hacer la búsqueda, o sea busca str hacia atrás desde fromIndex.
+"como estas".lastIndexOf("o", 2) -> 1
+
+contains(CharSequence s) - Verifica si el parámetro especificado se encuentra dentro del String y devuelve true.
+"como estas".contains("mo") -> true
+
+replace(char oldChar, char newChar) - Deja modificar un char del string por otro a elección.
+"como estas".replace('o', 'x') -> "cxmx estas"
+
+replace(CharSequence target, CharSequence replacement) - Reemplaza todas las apariciones de target.
+"como estas".replace("como", "que tal") -> "que tal estas"
+
+replaceAll(String regex, String replacement) - Permite reemplazar palabras de todo el string por otras completamente diferentes.
+"como estas estas".replaceAll("estas", "bien") -> "como bien bien"
+
+replaceFirst(String regex, String replacement) - Reemplaza la primera palabra que sea equivalente al parámetro que se encuentre en el string.
+"como estas estas".replaceFirst("estas", "bien") -> "como bien estas"
+
+Ejercicio 7:
+
+El stringbuilder en Java crea y modifica cadenas de caracteres, ya que es un objeto que puede modificarse después de ser creado, a diferencia de String, que no se puede hacer. Llega a ser útil cuando se hacen muchas modificaciones a una cadena, evitando la creación de múltiples objetos intermedios.
+
+Todos los constructores:
+
+Constructor vacío
+StringBuilder sb1 = new StringBuilder();
+
+Constructor con capacidad inicial
+StringBuilder sb2 = new StringBuilder(20);
+
+Constructor con una cadena inicial
+StringBuilder sb3 = new StringBuilder("como estas");
+
+Imprimir resultado
+System.out.println(sb3); -> como estas
+
+setLength(int newLength) - Cambia la longitud de la cadena. Si es mayor, rellena con \0. Si llega a ser menor, la corta.
+StringBuilder sb = new StringBuilder("como estas");
+sb.setLength(5);
+System.out.println(sb); -> como
+
+ensureCapacity(int minimumCapacity) - Se asegura que la capacidad mínima sea minimumCapacity.
+StringBuilder sb = new StringBuilder(5);
+sb.ensureCapacity(20);
+System.out.println("Capacidad asegurada.");
+
+append(String str) - Agrega más string al final.
+StringBuilder sb = new StringBuilder("como");
+sb.append(" estas");
+System.out.println(sb); -> como estas
+
+insert(int offset, String str) - Coloca en la posición offset.
+StringBuilder sb = new StringBuilder("como");
+sb.insert(4, " estas");
+System.out.println(sb); -> como estas
+
+delete(int start, int end) - Elimina caracteres de start a end - 1.
+StringBuilder sb = new StringBuilder("como estas");
+sb.delete(4, 6);
+System.out.println(sb); -> comoestas
+
+deleteCharAt(int index) - Elimina un solo carácter en la posición index.
+StringBuilder sb = new StringBuilder("como estas");
+sb.deleteCharAt(4);
+System.out.println(sb); -> comoestas
+
+reverse() - Invierte la cadena.
+StringBuilder sb = new StringBuilder("como estas");
+sb.reverse();
+System.out.println(sb); -> satse omoc
+
+Ejercicio 8:
+
+	La capacidad inicial del stringbuilder es de 16 al principio, pero al inicializarlo con el string, seria la suma de esos caracteres más 16, siendo en total 24 + 16 que es igual a 40.
+
+Ejercicio 9:
+
+	a) El length de Hannah es 31, ya que es la cantidad de caracteres que este tiene planteadas en un int.
+
+	b) El charAt recibe el char del index que se haya especificado, siendo en este caso el char "e" el que se encuentra en el index 12.
+
+	c) hannah.indexOf('b') es lo que se haría para referenciar la letra b en el string.
+
+Ejercicio 10:
+
+	El string va a tener un largo de 3, y va a ser desde la c de car, hasta la r, lo que imprimiría "car" nomás.
+
+Ejercicio 11:
+
+	"e 2am laste" es el resultado final de la variable result.
+
+	
